@@ -31,6 +31,8 @@ class MongoDBPipeline(object):
     操作 MongoDB 数据库
     """
     def __init__(self, connection_string, database):
+        self.db = None
+        self.client = None
         self.connection_string = connection_string
         self.database = database
 
@@ -42,7 +44,7 @@ class MongoDBPipeline(object):
         :return:
         """
         return cls(
-            connection_string=crawler.setting.get('MONGODB_CONNECTION_STRING'),
+            connection_string=crawler.settings.get('MONGODB_CONNECTION_STRING'),
             database=crawler.settings.get('MONGODB_DATABASE')
         )
 
